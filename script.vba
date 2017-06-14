@@ -9,14 +9,14 @@ saveloc = "C:\Users\Subin Abid\Downloads\STG\" 'save location
 MsgBox ("Started Download. Click OK")
 Downloaded = 0
 failed = 0
-
-For i = 2 To 50 Step 1
+        
+For i = 2 To 1500 Step 1 'to download from row 2 to 1500. Row 1 is the heading row
 
     link = ActiveSheet.Range("F" & i).Hyperlinks(1).Address
     drgname = ActiveSheet.Range("B" & i).Text & " " & ActiveSheet.Range("D" & i).Text & ".pdf"
     sorter = ""
     
-    'define a sorter to categorise drawings
+        'define a sorter to categorise drawings, I am using the PVM/PVI/PVC notation to sort the drawings
     drgtype = Mid(drgname, 12, 1)
     If drgtype = "M" Then
         sorter = "Mechanical\"
@@ -37,7 +37,7 @@ For i = 2 To 50 Step 1
     'Check if drg is downloaded
     If (chk = 0) Then
         ActiveSheet.Range("G" & i).Value = "OK"
-        Downloaded = Downloaded + 1
+            downloaded = downloaded + 1
     Else
         ActiveSheet.Range("G" & i).Value = "Error"
         failed = failed + 1
@@ -45,7 +45,7 @@ For i = 2 To 50 Step 1
 
 Next
 
-MsgBox (Downloaded & " drgs downloaded")
+    MsgBox (downloaded & " drgs downloaded")
 MsgBox (failed & " drgs failed")
 
 End Sub
