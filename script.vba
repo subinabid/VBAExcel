@@ -6,6 +6,32 @@ Private Declare Function URLDownloadToFile Lib "urlmon" Alias "URLDownloadToFile
 Private Sub CommandButton1_Click()
 
 saveloc = "C:\Users\Subin Abid\Downloads\STG\" 'save location
+                
+'Create Sub folders if it doesnot exist
+If Len(Dir(saveloc & "Mechanical", vbDirectory)) = 0 Then
+   MkDir saveloc & "Mechanical"
+End If
+
+If Len(Dir(saveloc & "Electrical", vbDirectory)) = 0 Then
+   MkDir saveloc & "Electrical"
+End If
+
+If Len(Dir(saveloc & "CnI", vbDirectory)) = 0 Then
+   MkDir saveloc & "CnI"
+End If
+
+If Len(Dir(saveloc & "Quality", vbDirectory)) = 0 Then
+   MkDir saveloc & "Quality"
+End If
+
+If Len(Dir(saveloc & "Civil", vbDirectory)) = 0 Then
+   MkDir saveloc & "Civil"
+End If
+
+If Len(Dir(saveloc & "Other", vbDirectory)) = 0 Then
+   MkDir saveloc & "Other"
+End If
+                
 MsgBox ("Started Download. Click OK")
 Downloaded = 0
 failed = 0
